@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,6 +19,34 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+    // instantiating the elements
+    const articleCard = document.createElement('div')
+    const artHeadline = document.createElement('div')
+    const artAuthor = document.createElement('div')
+    const artImgCont = document.createElement('div')
+    const artImg = document.createElement('img')
+    const artAuthName = document.createElement('span')
+    // setting class names, attributes and text
+    articleCard.classList.add('card')
+    artHeadline.classList.add('headline')
+    artHeadline.textContent = `${article.headline}`
+    artAuthor.classList.add('author')
+    artImgCont.classList.add('img-container')
+    artImg.src = `${article.authorPhoto}`
+    artAuthName.textContent = `${article.authorName}`
+    // creating the hierarchy
+    articleCard.appendChild(artHeadline)
+    articleCard.appendChild(artAuthor)
+    artAuthor.appendChild(artImgCont)
+    artImgCont.appendChild(artImg)
+    artAuthor.appendChild(artAuthName)
+    // adding event listeners
+    articleCard.addEventListener('click', event => {
+      console.log(`${artHeadline.textContent}`)
+    })
+    // never forget to return!
+    return articleCard
 }
 
 const cardAppender = (selector) => {
@@ -28,6 +58,21 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  axios.get(`http://localhost:5000/api/articles`)
+    .then(response => {
+      const parentArticlesObj = response.data.articles
+      // Description of code below for data transformation:
+      //    The data fetched and stored in the parentArticlesObj variable above contains a object for which each value is an array containing multiple object.  Each of these nested objects contained the a single article's data, and would need to be passed into the Card function.
+      //    I used Object.values() to transform parentArticlesObj's values into an array, so that I could use the forEach array method with a nested forEach array method to access each object containing article information
+      Object.values(parentArticlesObj).forEach(parentArray => {
+        parentArray.forEach(articleObj =>{
+          const newArticleCard = Card(articleObj)
+          document.querySelector(`${selector}`).appendChild(newArticleCard)
+        })
+      })
+    })
+    .catch(err => console.group(err.message))
+    .finally(() => console.group('done'))
 }
 
 export { Card, cardAppender }
