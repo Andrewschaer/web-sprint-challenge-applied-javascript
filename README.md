@@ -13,8 +13,8 @@ You are not allowed to collaborate during the sprint challenge.
 - [X] Fork and clone the repo. Delete your old fork from Github first if you are repeating this Unit.
 - [X] Open the assignment in Canvas and click on the "Set up git" option.
 - [X] Follow instructions to set up Codegrade's Webhook and Deploy Key.
-- [XX] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
-- [ ] Check to see that Codegrade has accepted your git submission.
+- [X] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
+- [X] Check to see that Codegrade has accepted your git submission.
 
 For a step-by-step on setting up Codegrade see [this guide.](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374)
 
@@ -30,11 +30,11 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 
 ### Instructions
 
-- [ ] Navigate to the root of the project with your command line.
-- [ ] Run `npm install` to download the dependencies listed in the `package.json` file.
-- [ ] Run `npm start` to compile the project and serve it.
-- [ ] Navigate Chrome to `http://localhost:3000`
-- [ ] In a separate terminal, run `npm test` to run tests.
+- [X] Navigate to the root of the project with your command line.
+- [X] Run `npm install` to download the dependencies listed in the `package.json` file.
+- [X] Run `npm start` to compile the project and serve it.
+- [X] Navigate Chrome to `http://localhost:3000`
+- [X] In a separate terminal, run `npm test` to run tests.
 
 **Steps Required for MVP:**
 
