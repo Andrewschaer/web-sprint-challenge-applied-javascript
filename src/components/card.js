@@ -61,11 +61,11 @@ const cardAppender = (selector) => {
   axios.get(`http://localhost:5000/api/articles`)
     .then(response => {
       const parentArticlesObj = response.data.articles
-      // Description of code below for data transformation:
-      //    The data fetched and stored in the parentArticlesObj variable above contains a object for which each value is an array containing multiple object.  Each of these nested objects contained the a single article's data, and would need to be passed into the Card function.
+      // Description of code below used for data transformation:
+      //    The data fetched and stored in the parentArticlesObj variable above contains an object for which each value is an array containing multiple objects.  Each of these nested objects contained a single article's data, which would need to be passed into the Card function.
       //    I used Object.values() to transform parentArticlesObj's values into an array, so that I could use the forEach array method with a nested forEach array method to access each object containing article information
       Object.values(parentArticlesObj).forEach(parentArray => {
-        parentArray.forEach(articleObj =>{
+        parentArray.forEach(articleObj => {
           const newArticleCard = Card(articleObj)
           document.querySelector(`${selector}`).appendChild(newArticleCard)
         })
