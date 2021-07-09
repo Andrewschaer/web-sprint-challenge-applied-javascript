@@ -11,6 +11,25 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+  
+  // instantiating the elements
+  const headerContainer = document.createElement('div')
+  const hdrDate = document.createElement('span')
+  const hdrTitle = document.createElement('h1')
+  const hdrTemp = document.createElement('span')
+  // setting class names, attributes and text
+  headerContainer.classList.add('header')
+  hdrDate.classList.add('date')
+  hdrDate.textContent = `${date}`
+  hdrTitle.textContent = `${title}`
+  hdrTemp.classList.add('temp')
+  hdrTemp.textContent = `${temp}`
+  // creating the hierarchy
+  headerContainer.appendChild(hdrDate)
+  headerContainer.appendChild(hdrTitle)
+  headerContainer.appendChild(hdrTemp)
+  // never forget to return!
+  return headerContainer
 }
 
 const headerAppender = (selector) => {
